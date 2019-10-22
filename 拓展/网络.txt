@@ -56,11 +56,10 @@ IPv6
 
 
 
-
 IP Routing
     路由协议关键
         与谁交换信息
-        交换什么xinx
+        交换什么信息
         如何交换信息
 
 
@@ -128,5 +127,102 @@ BBR
 
 
 
+解析网络怪象--上帝视角看网络
 
+    自研协议栈不按套路出牌的后果
+        原生 socket，不按 RFC
+
+    自作聪明的 OTT 厂商
+        懂上层应用，不懂网络
+        traceroute 原理(TTL = 1) & 非对称路径
+
+
+    这就是国内的 IPv6
+        不可达
+            MTU TCPMSS
+            IPv6 不分片
+
+
+    SACK Panic
+        1. 重新设置 TCPMSS
+        2. 禁用
+
+        TCP option
+            SACK(选择性应答)
+                (e.g. 接收到 1-2, 4-10; 回复 ack=2, 另附加 3-10 也收到)
+                RFC-1323
+
+            WindowScale
+                Throughput(吞吐量) <= Windowsize / RTT
+                滑动窗口
+
+
+    这就是 TCP 优化(不是TCP 加速)
+        CWND、SS、ssthresh、CA
+            拥塞窗口
+                控制 sender 的发送速率[已知，RTT时间、数量]
+
+            慢启动阀值
+
+            慢启动
+                指数规律增长
+                直至丢包，记录 cwnd 大小，即慢启动阀值
+
+            拥塞避免
+                线性规律增长
+                发生超时
+
+            假设：
+                三次握手
+                TCP + HTTP request
+                Response(递增) + Ack
+
+            数据发送量 = min(CWND, RWND)
+                但管道不是你想塞就想塞
+
+            提升 initCWND 2 -> 10
+
+            建联优化
+            首包优化
+
+            ...效果显著
+
+
+    超卖及识别对抗
+        高复用率
+        压测
+
+
+    劫持、封禁
+        逻辑
+            PC -- Router -- Internet
+               采集  \\  block
+                    FW(分光、镜像) 分析
+
+        原理(数据抢答干扰)
+            client \    (雾)    / 可能此时 socket 已经 closed
+                    \    /     /
+                     \  /     /
+            FW        \/     /
+                       \    /
+                        \  /
+            Server       \/
+
+SEQ 要对得上，否则认为 滑动窗口外 丢掉
+client                   server
+发送 SYN 报文
+并置发送序号为 X
+                         发送 SYN 报文
+                         并置发送序号为 Y
+                         确认号为 X + 1
+发送 ACK 报文
+并置发送序号为 X + 1
+确认号为 Y + 1
+
+SYN ACK  标志位 置位 '1'
+
+
+    网络高性能、边缘计算
+        DPDK
+            基于用户态 实现的 0 拷贝 快速数据包处理 系统
 
