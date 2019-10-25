@@ -226,3 +226,22 @@ SYN ACK  标志位 置位 '1'
         DPDK
             基于用户态 实现的 0 拷贝 快速数据包处理 系统
 
+
+https://www.icourse163.org/learn/PKU-1206307812?tid=1206626211#/learn/content
+
+
+https://www.haroldrandom.me/post/ostp/virtual-memory-address-translation
+
+http://jszhujun2010.farbox.com/post/ddia_notes/ddiahui-gu
+
+https://www.jishuwen.com/d/2oGW
+
+https://blog.xyiio.cn/2019/02/15/2019-02-15/
+
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export
+
+https://zhanghuimeng.github.io/tags/OS/
+
+
+https://doowzs.com/docs/42-os2019/ostep-13-15-vm-intro/

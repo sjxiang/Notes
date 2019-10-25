@@ -1,0 +1,44 @@
+# 数据库 MySQL
+
+# 认识 MySQL
+
+    net start MYSQL57
+    net stop MYSQL57 # 关闭 server
+
+    cd C:\Program Files\MySQL\MySQL Server 5.7\bin   # 环境变量(快捷方式，略)
+    mysql -hlocalhost -uroot -p123456
+    exit # 关闭 client
+
+client 与 server 建立连接
+    TCP/IP
+    命名管道和共享内存
+    Unix 域套接字
+
+server 处理 client 请求
+    
+    MySQL server
+        连接管理
+            处理连接
+
+        解析与优化
+            查询缓存(不推荐)
+
+            语法解析
+                编译原理
+
+            查询优化
+
+    存储引擎
+        MyISAM、InnoDB(默认)、Memory ...
+        对存储的数据，进行读取或者写入工作
+
+    文件系统
+
+
+# MySQL server 启动选项和系统变量
+
+
+
+
+# Redis
+# Mongo

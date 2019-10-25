@@ -6,15 +6,9 @@ titles = "本周的金枪鱼之夜，" \
 title_list = titles.split('，')
 title_list = set(title_list)
 
-keyword = '分布式 Paxos'  # 分词暂不考虑
+keyword = 'Paxos'
 
 for title in title_list:
-    ifmatch = True
-    for word in keyword.split():
-        title = title.replace(word, ' #{}# '.format(word))
-        if word not in title:
-            ifmatch = False
-
-    if ifmatch:
-        print(title)
+    if keyword in title:
+        print(title.replace(keyword, '#{}'.format(keyword)))
 
