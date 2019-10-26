@@ -9,36 +9,101 @@
     mysql -hlocalhost -uroot -p123456
     exit # 关闭 client
 
-client 与 server 建立连接
-    TCP/IP
-    命名管道和共享内存
-    Unix 域套接字
 
-server 处理 client 请求
-    
-    MySQL server
-        连接管理
-            处理连接
+    client 与 server 建立连接
+        TCP/IP
+        命名管道和共享内存
+        Unix 域套接字
 
-        解析与优化
-            查询缓存(不推荐)
 
-            语法解析
-                编译原理
+    server 处理 client 请求
+        MySQL server
+            连接管理
+                处理连接
 
-            查询优化
+            解析与优化
+                查询缓存(不推荐)
 
-    存储引擎
-        MyISAM、InnoDB(默认)、Memory ...
-        对存储的数据，进行读取或者写入工作
+                语法解析
+                    编译原理
 
-    文件系统
+                查询优化
+
+        存储引擎
+            MyISAM、InnoDB(默认)、Memory ...
+            对存储的数据，进行读取或者写入工作
+
+        文件系统
 
 
 # MySQL server 启动选项和系统变量
+    启动选项
+        'mysql -hlocalhost -uroot -p123456 ...'
+
+        CLI 的长短形式，例：
+            -hlocolhost
+            --host=localhost
+
+        配置文件
+            长久使用
+
+        ps：启动选项优先配置文件
+
+
+    系统变量
+        两者迥异
+
+        查看 SHOW VARIABLES LIKE '待匹配模式'
+
+        设置 scope
+
+
+    状态变量
+        SHOW STATUS LIKE '待匹配模式'
 
 
 
 
-# Redis
-# Mongo
+# 字符集和比较规则
+    字符集
+        硬盘只能存储二进制数据，那该如何存储字符串?
+            建立二进制数据与字符的映射关系
+                Q1. 哪些字符映射为二进制?
+                A：界定字符范围
+
+                Q2. 如何映射?
+                A：
+                    字符   ->  二进制  (编码)
+                    二进制 ->  字符    (解码)
+
+            字符集
+                描述某个字符范围的编码规则
+                例：'A' - '00000001'
+
+            比较规则
+                'a' vs. 'A' ?
+
+    MySQL 支持
+        略
+
+
+
+# InnoDB 记录存储结构
+# InnoDB 数据页结构
+# B+ Tree 索引
+# B+ Tree 索引的使用
+# MySQL 的数据目录
+# InnoDB 的表空间
+# 单表访问方法
+# 连接的原理
+# MySQL 基于成本的优化
+# InnoDB 统计数据是如何收集的
+# MySQL 基于规则的优化
+# Explain 详解
+# optimizer trace
+# InnoDB 的 Buffer
+# 事务
+# redo 日志
+# undo 日志
+# 事务的隔离级别 与 MVCC
+# 锁
