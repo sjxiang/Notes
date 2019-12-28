@@ -5,3 +5,8 @@ __pycache__
 .env
 *.db
 
+
+env/
+Linux 内核分析与应用/
+编程规范/
+拓展/
